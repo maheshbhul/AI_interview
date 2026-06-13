@@ -1,10 +1,15 @@
-import express from "express"
+import express from "express";
 import isAuth from "../middleware/isAuth.js";
 import { upload } from "../middleware/multer.js";
 import { analyzeResume } from "../controller/interview.controller.js";
 
+const interviewRouter = express.Router();
 
-const interviewRouter=express.Router();
-interviewRouter.post("/resume",isAuth,upload.single(File("resumne"),analyzeResume))
+interviewRouter.post(
+  "/resume",
+  isAuth,
+  upload.single("resume"),
+  analyzeResume
+);
 
 export default interviewRouter;
